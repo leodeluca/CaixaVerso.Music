@@ -1,0 +1,40 @@
+﻿@using CaixaVerso.MusicApp.Data
+@model IEnumerable<Music>
+
+@{
+    ViewData["Title"] = "Músicas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mb-4">Músicas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary mb-3">Cadastrar Nova Música</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                <th>@Html.DisplayNameFor(model => model.Artist)</th>
+                <th class="text-end">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var music in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(_ => music.Id)</td>
+                    <td>@Html.DisplayFor(_ => music.Title)</td>
+                    <td>@Html.DisplayFor(_ => music.Artist.Name)</td>
+                    <td class="text-end">
+                        <a asp-action="Edit" asp-route-id="@music.Id" class="btn btn-sm btn-secondary me-1">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@music.Id" class="btn btn-sm btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

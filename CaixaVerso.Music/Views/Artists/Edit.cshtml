@@ -1,0 +1,23 @@
+﻿@using CaixaVerso.MusicApp.Data
+@model Artist
+
+@{
+    ViewData["Title"] = "Create Artist";
+}
+
+<h2 class="mb-4">Editar Artista</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Style" class="form-label"></label>
+        <input asp-for="Style" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+</form>
